@@ -43,6 +43,7 @@
         <button onclick="generatePDF()">Generate PDF Report</button>
         <button onclick="viewAnalytics()">View Analytics</button>
         <button onclick="deleteApp()" style="background: #dc3545;">Delete App</button>
+        <button onclick="devPrompt()" style="background: #6c757d;">Developer Prompt Fluid Level</button>
     </div>
     <script>
         const stateTimezones = { /* same as before */ 'AL': 'America/Chicago', 'AK': 'America/Anchorage', 'AZ': 'America/Phoenix', 'AR': 'America/Chicago', 'CA': 'America/Los_Angeles', 'CO': 'America/Denver', 'CT': 'America/New_York', 'DE': 'America/New_York', 'FL': 'America/New_York', 'GA': 'America/New_York', 'HI': 'Pacific/Honolulu', 'ID': 'America/Boise', 'IL': 'America/Chicago', 'IN': 'America/Indianapolis', 'IA': 'America/Chicago', 'KS': 'America/Chicago', 'KY': 'America/New_York', 'LA': 'America/Chicago', 'ME': 'America/New_York', 'MD': 'America/New_York', 'MA': 'America/New_York', 'MI': 'America/Detroit', 'MN': 'America/Chicago', 'MS': 'America/Chicago', 'MO': 'America/Chicago', 'MT': 'America/Denver', 'NE': 'America/Chicago', 'NV': 'America/Los_Angeles', 'NH': 'America/New_York', 'NJ': 'America/New_York', 'NM': 'America/Denver', 'NY': 'America/New_York', 'NC': 'America/New_York', 'ND': 'America/Chicago', 'OH': 'America/New_York', 'OK': 'America/Chicago', 'OR': 'America/Los_Angeles', 'PA': 'America/New_York', 'RI': 'America/New_York', 'SC': 'America/New_York', 'SD': 'America/Chicago', 'TN': 'America/Chicago', 'TX': 'America/Chicago', 'UT': 'America/Denver', 'VT': 'America/New_York', 'VA': 'America/New_York', 'WA': 'America/Los_Angeles', 'WV': 'America/New_York', 'WI': 'America/Chicago', 'WY': 'America/Denver' };
@@ -53,6 +54,14 @@
         } else {
             document.getElementById('main').style.display = 'block';
             initApp();
+        }
+
+        function devPrompt() {
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const timeStr = `${hours}:${minutes}`;
+            startPrompt(timeStr);
         }
 
         function register() {
